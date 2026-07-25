@@ -107,4 +107,4 @@ Items added to this file should be:
 ## External Sources
 
 All fonts referenced above are external. Do not vendor font binary files into this repository — link to the source repository (or load via CDN, e.g. jsDelivr against the GitHub repo) so consumers always get the maintained, up-to-date version rather than a static copy that can go stale.
-Add Persian typography skill
+
