@@ -5,7 +5,7 @@ Last reviewed: 2026-07-26
 
 ## Purpose
 
-Reference for choosing and implementing Persian/Farsi fonts in web and app UI: which fonts to use, how to load them, and RTL typography notes. Scope is fonts and typography only — general Persian NLP/text-processing tools are out of scope for this file.
+Reference for choosing and implementing Persian/Farsi fonts in web and app UI — covering everyday UI/body-text fonts, display/headline fonts, and Nastaliq/calligraphic fonts — plus how to load them and RTL typography notes. Scope is fonts and typography only — general Persian NLP/text-processing tools are out of scope for this file.
 
 ## Recommended Fonts
 
@@ -58,6 +58,51 @@ https://github.com/aminabedi68/Mikhak
 License: SIL Open Font License
 Notes: Sister project to Estedad, same designer (Amin Abedi). Slightly warmer/rounder letterforms than Estedad.
 
+## Display / Headline Fonts
+
+### Lalezar
+
+Repository:
+https://github.com/BornaIz/Lalezar (also distributed via Google Fonts)
+
+License: SIL Open Font License
+Format: Single weight, display style
+Notes: A bold, decorative Arabic/Persian + Latin display typeface reviving the lettering style of 1960s–70s Iranian ("Film-Farsi") movie posters. Supported by Google Fonts. Not meant for body text — use for headlines, banners, posters, and brand/logo-style moments where a distinctly Persian visual character is wanted.
+Decision: Recommended when a project wants a culturally rooted, eye-catching display face rather than a neutral sans-serif.
+
+## Persian Calligraphy / Nastaliq
+
+Use this category only for headings, hero moments, logos, invitations, or culturally themed sections — never for body text or long-form UI copy; Nastaliq's cursive, connected forms are not meant for small sizes or dense reading.
+
+### Noto Nastaliq Urdu (recommended for digital calligraphy use)
+
+Repository:
+https://github.com/notofonts/nastaliq
+
+License: SIL Open Font License 1.1
+Notes: Actively maintained by Google's Noto project, built with modern OpenType shaping support (works reliably in current browsers, unlike many older Nastaliq fonts). Despite the "Urdu" name, it renders the Nastaliq script style historically developed in Persia and used for Persian, Urdu, and Kashmiri. This is the safest choice when a project needs real Nastaliq calligraphy on the web today.
+
+### IranNastaliq
+
+Repository:
+https://github.com/farsi-fonts/fonts-irannastaliq (web-optimized fork: https://github.com/font-store/font-IranNastaliq)
+
+License: Open source (originally sponsored by Iran's Supreme Council of Information and Communications Technology; designed by Hossein Zahedi, 2013)
+Notes: Persian-specific Nastaliq design, historically significant. Rendering quality in modern browsers is less consistent than Noto Nastaliq Urdu, so prefer it for print/desktop or static image use rather than live web text.
+
+### Classical Naskh alternative (calligraphic but more legible than Nastaliq)
+
+Repositories:
+https://github.com/aliftype/amiri (Amiri)
+https://github.com/silnrsi/font-scheherazade (Scheherazade New)
+
+License: SIL Open Font License (both)
+Notes: Elegant Naskh-style calligraphic fonts, primarily built for Arabic script but cover the Persian character set. More legible at small sizes than true Nastaliq, so useful for a "classical/literary" feel in longer passages (e.g. poetry excerpts, quotes) where full Nastaliq would be unreadable.
+
+### Do not use for new work
+
+- **Noori Nastaliq / Jameel Noori Nastaleeq** — proprietary (Monotype/InPage licensing lineage), not open source. Do not bundle or self-host.
+
 ## Legacy / Compatibility Only
 
 ### FarsiWeb Fonts (Roya, Homa, Titr, etc.)
@@ -79,6 +124,7 @@ Notes: Active foundry producing Perso-Arabic type (e.g. Nika, Ganjname). License
 ## Do Not Use
 
 - **Shabnam** (https://github.com/rastikerdar/shabnam-font) — officially discontinued by its author. Do not select for new work; only relevant if maintaining an old project that already depends on it.
+- **Samim** (https://github.com/rastikerdar/samim-font) — also officially discontinued by its author (same designer as Shabnam/Vazirmatn/Sahel). Do not select for new work.
 - **Commercial fonts** (e.g. IRANSans, Yekan) — not open source, cannot be bundled or self-hosted from a free source. If a client/brand requires one of these, it must be licensed separately and is out of scope for this repository.
 
 ## Bundled Collections (secondary reference only)
