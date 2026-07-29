@@ -1,7 +1,9 @@
-# Branding & Brand Identity
+---
+name: branding
+description: "Define brand strategy, positioning, voice, and visual identity systems before logo or website execution. Use when auditing a brand, creating identity direction, documenting brand rules, or aligning design decisions with business positioning."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Branding & Brand Identity
 
 ## Purpose
 

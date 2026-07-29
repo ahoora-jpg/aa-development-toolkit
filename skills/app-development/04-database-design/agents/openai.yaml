@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database Design"
+  short_description: "Design correct and scalable database schemas"
+  default_prompt: "Use $04-database-design to guide this task with practical checks and recommendations."

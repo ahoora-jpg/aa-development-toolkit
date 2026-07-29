@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Design"
+  short_description: "Plan scalable and reliable application systems"
+  default_prompt: "Use $01-system-design to guide this task with practical checks and recommendations."

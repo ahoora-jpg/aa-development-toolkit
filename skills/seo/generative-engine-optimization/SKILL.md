@@ -1,7 +1,9 @@
-# Generative Engine Optimization (GEO)
+---
+name: generative-engine-optimization
+description: "Improve the likelihood that a brand or source is accurately cited in AI-generated answers through clear entities, evidence, structure, and authority. Use when auditing or planning content for AI answer visibility."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Generative Engine Optimization (GEO)
 
 ## Purpose
 

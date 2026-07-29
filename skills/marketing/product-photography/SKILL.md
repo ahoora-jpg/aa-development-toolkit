@@ -1,7 +1,9 @@
-# Product Photography
+---
+name: product-photography
+description: "Plan, produce, and present ecommerce product photography that communicates detail, scale, quality, and trust. Use when defining shot lists, image standards, product-gallery coverage, or photography delivery requirements."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Product Photography
 
 ## Purpose
 

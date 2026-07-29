@@ -1,40 +1,47 @@
-# Testing & Quality
+---
+name: 09-testing-quality
+description: Build a risk-based automated testing portfolio with unit, integration, contract, end-to-end, performance, and reliability tests that run effectively in CI. Use when defining quality strategy, implementing a feature, or stabilizing a release pipeline.
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Testing and Quality
 
-## Purpose
+## Overview
 
-How to build confidence that an application works and keeps working as it changes: what to test, at what level, and with what tools.
+Tests provide evidence about risk. Build a portfolio with many fast, focused checks; enough real integration coverage to verify boundaries; and a small set of valuable end-to-end journeys. The goal is fast, trustworthy feedback and safe change—not a target percentage detached from behavior.
 
-## Key Sources
+## Key Concepts
 
-### Awesome Testing
+- **Unit tests:** Exercise a small behavior with controlled collaborators. They should be deterministic, fast, and focused on domain decisions rather than implementation trivia.
+- **Integration tests:** Verify real boundaries such as databases, brokers, filesystems, and HTTP adapters. Disposable containers can provide production-like dependencies without shared mutable environments.
+- **Contract tests:** Check that provider and consumer assumptions remain compatible independently of full end-to-end deployment.
+- **End-to-end tests:** Validate a few critical journeys through deployed components. They give broad confidence but are slower and harder to diagnose.
+- **TDD:** Red-green-refactor can clarify behavior and design: write a meaningful failing example, implement the smallest correct behavior, then improve structure while tests stay green.
+- **Performance and reliability tests:** Load, stress, spike, soak, fault, migration, restore, and failover tests validate nonfunctional requirements and recovery.
 
-Repository:
-https://github.com/awesomelistsio/awesome-testing
+## Best Practices
 
-Notes: Actively maintained, curated list spanning unit/integration/e2e testing tools, accessibility testing (Lighthouse, Pa11y), mocking libraries, and coverage tools — organized by testing level, which maps directly onto the test-pyramid concept below.
+- Derive tests from acceptance criteria, invariants, threats, failure modes, and production incidents.
+- Test observable behavior; avoid asserting private call order or duplicating the implementation.
+- Control clocks, randomness, identifiers, and network behavior. Never hide nondeterminism with arbitrary sleeps.
+- Create isolated data per test and clean it predictably; parallelize only when state boundaries are safe.
+- Run lint/type/unit checks early, integration and contract checks next, and scarce end-to-end tests later.
+- Quarantine a flaky test only with an owner, issue, evidence, and deadline; preserve failure artifacts.
+- Track suite duration, failure rate, flake rate, escaped defects, and time to diagnose—not coverage alone.
 
-### k6 (load/performance testing)
+## Common Pitfalls
 
-Repository:
-https://github.com/grafana/k6
-
-Notes: Same tool referenced in 06-scalability-performance — the standard open-source option for load testing an API before shipping a scalability-sensitive feature.
-
-## Core Concepts To Apply
-
-- **The testing pyramid**: many fast unit tests (test one function/class in isolation) → fewer integration tests (test how components work together, e.g. API + database) → few end-to-end tests (test a full user flow through the real UI). Invert this (mostly E2E, few unit tests) and the suite becomes slow and flaky.
-- **Test the behavior, not the implementation**: tests should keep passing after an internal refactor that doesn't change observable behavior — testing internal implementation details makes the suite brittle and expensive to maintain.
-- **TDD, used pragmatically**: write the test before the code for tricky business logic where the expected behavior is easy to state but easy to get wrong (edge cases, calculations); don't force it uniformly onto UI code where it doesn't fit as naturally.
-- **CI-friendly by design**: tests must be deterministic (no reliance on real time, real network, or execution order) and fast enough to run on every pull request — a flaky or slow suite gets ignored, which defeats its purpose.
-- **Load testing before scale-sensitive launches**: run a load test (k6 or similar) against any endpoint expected to take a traffic spike, before it happens in production, not after.
+- Mocking the database or framework so thoroughly that integration assumptions remain untested.
+- Building a slow inverted pyramid dominated by browser-level tests.
+- Chasing line coverage with assertions that do not protect behavior.
+- Reusing shared accounts or fixed records across parallel CI jobs.
+- Retrying failing tests globally, which converts signal into intermittent false confidence.
+- Running load tests with unrealistic data, warm caches, or unconstrained test infrastructure.
+- Treating snapshot approval as proof that business behavior is correct.
 
 ## When To Use
 
-Apply from the first feature — retrofitting tests onto an untested codebase is far more expensive than writing them alongside the code. Prioritize test coverage on business-critical logic (payments, auth, data integrity) over boilerplate/UI code if time is limited.
+Use this skill during feature design, not only after implementation. Prioritize tests by impact and likelihood: unit-test dense business rules, integration-test system boundaries, contract-test independently deployed consumers/providers, and end-to-end-test critical user and operational journeys.
 
-## External Sources
+## Further Reading
 
-Both sources above are external, actively maintained projects — link to them rather than duplicating their content here.
+See the curated [source register](sources.md).

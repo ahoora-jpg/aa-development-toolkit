@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grid & Layout Systems"
+  short_description: "Create responsive grid and layout systems"
+  default_prompt: "Use $grid-layout-systems to guide this task with practical checks and recommendations."

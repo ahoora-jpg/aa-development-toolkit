@@ -1,40 +1,48 @@
+---
+name: 04-database-design
+description: Design durable application data models, indexes, transactions, replication, and partitioning while choosing SQL or NoSQL from access and consistency needs. Use when modeling data, diagnosing query behavior, or planning database growth.
+---
+
 # Database Design
 
-Status: Draft
-Last reviewed: 2026-07-26
+## Overview
 
-## Purpose
+Design data around invariants, access patterns, retention, and failure recovery. Select a datastore for required semantics and operational maturity, not trend. A clear relational model is a strong default; introduce specialized stores when a measured workload needs their model or scaling characteristics.
 
-How to design a database schema that stays correct and fast as the app grows: normalization, indexing, and choosing between SQL and NoSQL.
+## Key Concepts
 
-## Key Sources
+- **Relational modeling:** Define entities, stable identifiers, relationships, constraints, ownership, and lifecycle. Use database constraints to protect invariants that must survive every code path.
+- **Normalization:** Normalize transactional data to remove update anomalies; denormalize deliberately for proven read paths with a synchronization strategy.
+- **Indexes:** Index selective predicates, joins, uniqueness, and common orderings. Column order matters. Every index consumes storage and increases write and maintenance cost.
+- **Transactions:** ACID describes atomicity, consistency, isolation, and durability. Select the weakest isolation that still protects the workflow, and handle deadlocks or serialization failures with bounded retries.
+- **SQL versus NoSQL:** Relational systems favor joins, constraints, and flexible transactions. Document, key-value, wide-column, graph, and search stores favor particular access patterns; they do not remove schema or consistency design.
+- **Replication:** Replicas improve availability and reads but create lag, failover, and read-your-write decisions.
+- **Sharding:** Partition by a stable key with good cardinality and locality. Plan routing, resharding, hotspots, global uniqueness, cross-shard operations, and tenant movement.
+- **ACID and BASE:** BASE is a loose description of systems accepting temporary inconsistency. State concrete guarantees—such as causal, eventual, or read-your-write—instead of using the acronym as a design.
 
-### Awesome Database Design
+## Best Practices
 
-Repository:
-https://github.com/sujeet-agrahari/awesome-database-design
+- Write invariants and primary queries before choosing tables, documents, or indexes.
+- Use migrations that are versioned, reversible where practical, and compatible during rolling deployment.
+- Inspect query plans with representative distributions; monitor slow queries, locks, connections, replication lag, and storage growth.
+- Keep transactions short and avoid remote calls while locks are held.
+- Back up automatically, encrypt data and transport, test point-in-time restore, and measure recovery objectives.
+- Separate authoritative data from derived caches, search indexes, analytics, and event projections.
+- Minimize sensitive data, define retention/deletion, and verify replicas and backups follow the same policy.
 
-Notes: Actively maintained, focused curated list covering naming conventions, hierarchical data, complex relationships, indexing (B-trees, B+trees), multi-language schema design, and ER-diagram tools — a practical companion to the system-design-primer's more theoretical database section.
+## Common Pitfalls
 
-### Awesome Databases
-
-Repository:
-https://github.com/dhamaniasad/awesome-databases
-
-Notes: Broad catalog of database engines themselves (PostgreSQL, MongoDB, Redis, YugabyteDB, etc.) — useful when the question is "which database should this feature use," not just "how do I model this table."
-
-## Core Concepts To Apply
-
-- **Normalize by default, denormalize deliberately**: start with a normalized (3NF) relational schema to avoid update anomalies; only denormalize specific hot paths once a real performance need is measured.
-- **Index for your actual queries**: an index speeds reads but costs writes and storage — add indexes based on the app's real query patterns (check with `EXPLAIN`), not preemptively on every column.
-- **SQL vs NoSQL decision**: choose SQL (Postgres/MySQL) by default for anything with relationships and transactions (most business apps); choose NoSQL (MongoDB, DynamoDB) when the access pattern is simple key-based lookups at very large scale, or the schema is genuinely document-shaped and changes often.
-- **Transactions & ACID vs BASE**: use database transactions for anything that must be atomically consistent (money, inventory); understand that distributed/NoSQL systems often trade strict consistency for availability (BASE) — know which guarantee each part of the app actually needs.
-- **Migrations as code**: every schema change goes through a versioned migration file, never a manual change to production — this is what makes multi-developer, multi-environment apps survive schema evolution.
+- Adding indexes for every column or trusting indexes without checking plans.
+- Using application checks where a unique, foreign-key, or check constraint is required.
+- Reading asynchronously replicated data immediately after a write without a consistency strategy.
+- Choosing a document store to avoid modeling relationships that remain relational.
+- Sharding before exhausting schema, query, index, hardware, replica, and partitioning improvements.
+- Running destructive migrations in one step with no compatibility window or recovery rehearsal.
 
 ## When To Use
 
-Apply when designing any new table/collection, and revisit when a specific query is slow — most database performance problems are missing/wrong indexes or a schema mismatched to the access pattern, not the database engine itself.
+Use this skill whenever an application owns durable state. Start with a well-operated relational database when requirements are uncertain. Add a specialized datastore only when its access model, latency, scale, or search/graph capability has a documented advantage and the team can operate it.
 
-## External Sources
+## Further Reading
 
-Both sources above are external, actively maintained GitHub repositories — link to them rather than duplicating their content here.
+See the curated [source register](sources.md).

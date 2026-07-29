@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility"
+  short_description: "Build and audit accessible web interfaces"
+  default_prompt: "Use $accessibility to guide this task with practical checks and recommendations."

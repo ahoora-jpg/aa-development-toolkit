@@ -1,21 +1,11 @@
-﻿# tools
+# tools
 
-Status: Draft
+Reusable validation and maintenance utilities for this repository.
 
-## Purpose
+## Available tools
 
-Automation scripts, validation tools, generators, and development utilities.
+### `validate-skills.cjs`
 
-## Content Requirements
+Run `node tools/validate-skills.cjs` from the repository root. It validates every package under `skills/` without requiring third-party Node.js dependencies.
 
-Items added to this directory should be:
-
-- Reusable
-- Documented
-- Reviewed
-- Compatible with supported environments
-- Clearly marked as Draft, Review, Approved, or Deprecated
-
-## External Sources
-
-External material must document its original source, license, dependencies, compatibility, and adaptation notes.
+External tools added here must document their source, license, dependencies, compatibility, and adaptation notes.

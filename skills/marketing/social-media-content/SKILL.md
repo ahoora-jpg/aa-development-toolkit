@@ -1,7 +1,9 @@
-# Social Media Content Design
+---
+name: social-media-content
+description: "Design recognizable platform-aware social media content that extends a brand system across formats and campaigns. Use when planning Instagram, TikTok, or LinkedIn visuals, templates, content series, or asset specifications."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Social Media Content Design
 
 ## Purpose
 

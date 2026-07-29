@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backend Architecture"
+  short_description: "Structure maintainable backend applications"
+  default_prompt: "Use $02-backend-architecture to guide this task with practical checks and recommendations."

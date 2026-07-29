@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tactile Brutalism"
+  short_description: "Apply tactile brutalism without losing usability"
+  default_prompt: "Use $tactile-brutalism to guide this task with practical checks and recommendations."

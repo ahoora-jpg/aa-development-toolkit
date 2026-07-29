@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generative Engine Optimization (GEO)"
+  short_description: "Improve visibility in generative AI answers"
+  default_prompt: "Use $generative-engine-optimization to guide this task with practical checks and recommendations."

@@ -1,7 +1,9 @@
-# Logo Design
+---
+name: logo-design
+description: "Design and evaluate functional logo systems that remain recognizable, scalable, and technically usable across media. Use when creating logo concepts, preparing logo variants, or reviewing reproduction and SVG requirements."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Logo Design
 
 ## Purpose
 

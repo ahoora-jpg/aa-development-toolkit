@@ -1,7 +1,9 @@
-# Design Systems
+---
+name: design-systems
+description: "Create and govern reusable design systems with tokens, components, documentation, and contribution rules. Use when standardizing product UI, consolidating inconsistent patterns, or planning a scalable component library."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Design Systems
 
 ## Purpose
 

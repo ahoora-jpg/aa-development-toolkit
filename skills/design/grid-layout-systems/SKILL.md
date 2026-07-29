@@ -1,7 +1,9 @@
-# Grid & Layout Systems
+---
+name: grid-layout-systems
+description: "Design responsive grids, spacing scales, and layout composition rules that remain consistent across viewports. Use when planning page structure, responsive behavior, alignment, rhythm, or reusable layout primitives."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Grid & Layout Systems
 
 ## Purpose
 

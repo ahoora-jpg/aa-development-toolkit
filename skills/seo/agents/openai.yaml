@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO (Search Engine & AI-Answer Optimization)"
+  short_description: "Improve search and AI-answer visibility"
+  default_prompt: "Use $seo to guide this task with practical checks and recommendations."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Branding & Brand Identity"
+  short_description: "Define brand strategy and identity systems"
+  default_prompt: "Use $branding to guide this task with practical checks and recommendations."

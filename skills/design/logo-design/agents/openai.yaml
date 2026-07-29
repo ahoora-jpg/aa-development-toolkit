@@ -1,0 +1,4 @@
+interface:
+  display_name: "Logo Design"
+  short_description: "Design functional and scalable logo systems"
+  default_prompt: "Use $logo-design to guide this task with practical checks and recommendations."

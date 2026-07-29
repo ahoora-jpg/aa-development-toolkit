@@ -1,37 +1,48 @@
-# DevOps & Deployment
+---
+name: 10-devops-deployment
+description: Establish safe application delivery with CI/CD, reproducible containers, trunk-based development, conventional commits, progressive deployment, rollback, and observability. Use when creating or improving build, release, deployment, or production operations.
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# DevOps and Deployment
 
-## Purpose
+## Overview
 
-How to get code from a developer's machine into production reliably and repeatedly: CI/CD pipelines, containerization, and basic observability.
+Delivery is a repeatable path from reviewed source to observable production behavior. Automate the same immutable artifact through environments, keep changes small, make rollback or forward recovery routine, and measure user impact after deployment.
 
-## Key Sources
+## Key Concepts
 
-### Awesome DevOps
+- **Continuous integration:** Developers integrate frequently; every change receives automated build, static analysis, test, security, and artifact checks.
+- **Continuous delivery/deployment:** Delivery keeps an artifact releasable; deployment automatically releases qualifying changes. Approval policy should match risk and compliance.
+- **Containers:** Build minimal, reproducible images from pinned inputs; run as non-root where possible; keep state outside the container; expose health separately from readiness.
+- **Trunk-based development:** Short-lived branches and small merges reduce integration inventory. Incomplete behavior is controlled with safe feature flags, not long-lived divergence.
+- **Commit conventions:** Consistent commit intent improves review and automation, but release behavior should not depend on wording without validation.
+- **Deployment strategy:** Rolling, blue-green, and canary releases trade infrastructure cost, speed, and exposure. Database changes require expand-and-contract compatibility.
+- **Observability:** Logs describe events, metrics quantify behavior, and traces connect requests. Service objectives and actionable alerts turn telemetry into operational decisions.
 
-Repository:
-https://github.com/awesome-soft/awesome-devops
+## Best Practices
 
-Notes: Curated list covering version control, CI/CD tools (Jenkins, GitLab CI), infrastructure automation, and distributed tracing (Zipkin) — a broad map of the DevOps tooling space.
+- Build once, generate provenance and a dependency inventory, scan inputs, sign where appropriate, and promote the same digest.
+- Keep credentials short-lived and environment-scoped; protect production with least privilege and audited controls.
+- Use deterministic builds, dependency caching with integrity checks, and fast feedback before expensive jobs.
+- Separate deploy from release with governed flags; define owners, expiry, and removal.
+- Automate migrations as explicit steps; back up and rehearse recovery before destructive change.
+- Deploy progressively, compare service-level and business signals, and halt or reverse automatically on material regression.
+- Instrument request IDs, structured logs, RED/USE-style metrics, traces, deploy markers, and runbooks; alert on symptoms tied to objectives.
 
-### Docker
+## Common Pitfalls
 
-Repository:
-https://github.com/docker/docker-ce
-
-Notes: The standard for containerizing an application so it runs identically across a developer's machine, CI, and production — the practical starting point before adopting Kubernetes or any other orchestration.
-
-## Core Concepts To Apply
-
-- **CI/CD pipeline basics**: every push runs automated tests (CI); every merge to the main branch can be automatically built and deployed (CD) after tests pass — remove manual, error-prone deployment steps as early as possible.
-- **Containerize the app**: package the app and its dependencies into a Docker image so "works on my machine" stops being a class of bug; the same image should move through dev → staging → production unchanged.
-- **Trunk-based development**: keep the main branch always deployable, work in short-lived branches, merge frequently — avoids long-lived feature branches that are painful to merge and slow to get feedback on.
-- **Infrastructure as code**: define servers/cloud resources in version-controlled config (Terraform, CloudFormation, Pulumi) rather than clicking through a cloud console — makes infrastructure changes reviewable and reproducible.
-- **Observability basics**: structured logging, centralized log aggregation, and basic metrics/alerting (error rate, latency, uptime) from day one — you cannot fix what you cannot see, and retrofitting observability after an incident is too late.
-- **Conventional commits**: standardize commit message format (`feat:`, `fix:`, `chore:`) so changelogs and version bumps can be automated, and history stays readable as the team grows.
+- Rebuilding artifacts per environment or deploying mutable tags such as `latest`.
+- Baking secrets into source, CI output, image layers, or deployment manifests.
+- Using a passing pipeline as proof of production health without post-deploy verification.
+- Coupling an incompatible schema deletion to the application release that stops using it.
+- Accumulating permanent feature flags and environment-specific snowflakes.
+- Alerting on every metric threshold until operators ignore notifications.
+- Performing rollback without considering irreversible data writes or migrations.
 
 ## When To Use
 
-Set up CI (automated tests on every push) and
+Use this skill for every production service, scaled to its risk. A small application still needs repeatable builds, tests, backups, least-privilege deployment, health checks, and basic telemetry. Add canaries, provenance controls, multi-region delivery, and formal approvals as impact and compliance increase.
+
+## Further Reading
+
+See the curated [source register](sources.md).

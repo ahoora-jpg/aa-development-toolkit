@@ -1,49 +1,47 @@
+---
+name: 01-system-design
+description: Design production application systems by reasoning about capacity, availability, consistency, caching, replication, sharding, load balancing, and asynchronous work. Use when defining a new architecture, evaluating bottlenecks, or documenting distributed-system tradeoffs.
+---
+
 # System Design
 
-Status: Draft
-Last reviewed: 2026-07-26
+## Overview
 
-## Purpose
+Turn product requirements into an operable system with explicit limits. Begin with traffic, data volume, latency, availability, durability, compliance, and cost targets. Prefer a simple modular system until evidence justifies distribution; every network boundary adds partial failure, latency, coordination, and observability work.
 
-Core concepts for reasoning about how a large application should be shaped before writing code: scalability, reliability, and the standard building blocks (load balancers, caches, queues, replication, sharding). Use this before committing to a specific backend framework or database.
+## Key Concepts
 
-## Key Sources
+- **Performance and scalability:** Performance is response time or throughput at a given load. Scalability is how effectively capacity grows as resources are added. Track percentiles such as p95/p99, not averages alone.
+- **Capacity model:** Estimate peak reads/writes, concurrent work, payload size, storage growth, bandwidth, and hot-key concentration. Write assumptions and add safety margin.
+- **Availability and reliability:** Define service-level indicators and objectives. Design recovery objectives, redundancy, graceful degradation, and an error budget appropriate to business impact.
+- **Consistency:** CAP applies during a network partition: a distributed operation must trade immediate consistency against availability. Choose guarantees per workflow; money and uniqueness often need stronger coordination than feeds or analytics.
+- **Load balancing:** Distribute work using health checks and an algorithm suited to the workload. Keep application instances stateless where practical; make retries safe.
+- **Caching:** Place caches at client, edge, application, or database layers. Define key, ownership, TTL, invalidation, stampede protection, and acceptable staleness before implementation.
+- **Replication and sharding:** Replication improves read capacity and resilience but introduces lag and failover concerns. Sharding increases write/storage capacity but complicates routing, joins, rebalancing, and global constraints.
+- **Queues and streams:** Decouple slow or bursty work. Assume duplicate delivery unless the platform proves otherwise; use idempotency, bounded retries, dead-letter handling, and backlog monitoring.
 
-### System Design Primer
+## Best Practices
 
-Repository:
-https://github.com/donnemartin/system-design-primer
+- Draw the request path, trust boundaries, state owners, synchronous dependencies, and failure paths.
+- Set timeouts at every remote call; use exponential backoff with jitter and a retry budget.
+- Prevent retry amplification with idempotency keys, circuit breaking, load shedding, and concurrency limits.
+- Define degradation modes: stale reads, reduced features, queued writes, or explicit unavailability.
+- Measure saturation, queue depth, errors, traffic, and latency; test failover and recovery rather than assuming them.
+- Keep a single source of truth for each invariant. Treat derived stores, indexes, and caches as rebuildable.
 
-Notes: The most widely used free reference for learning system design from scratch — covers scalability, availability, caching, load balancing, databases (SQL vs NoSQL, replication, sharding), and includes worked example designs (e.g. design a URL shortener, design Twitter).
-Decision: Start here before anything else in this folder.
+## Common Pitfalls
 
-### Awesome System Design Resources
-
-Repository:
-https://github.com/ashishps1/awesome-system-design-resources
-
-Notes: Actively maintained, curated collection of articles, videos, and real "how we scaled X" case studies from engineering blogs at major tech companies — good for seeing how the primer's concepts apply in production.
-
-### Awesome Scalability
-
-Repository:
-https://github.com/ci-ai/scalability (originally binhnguyennus/awesome-scalability)
-
-Notes: Focused specifically on scalability, availability, stability, and performance patterns, organized by problem (e.g. "how to handle a spike in traffic," "how to design for high availability").
-
-## Core Concepts To Apply
-
-- **Scalability vs performance**: performance is how fast one request is; scalability is how the system behaves as load grows. Optimize for the one your product actually needs.
-- **CAP theorem**: under a network partition, choose consistency or availability — know which your app needs per feature (e.g. payments favor consistency, activity feeds favor availability).
-- **Caching layers**: browser/CDN cache → application cache (e.g. Redis) → database query cache. Cache invalidation strategy matters more than the cache itself.
-- **Load balancing**: distribute traffic across multiple app instances; pick algorithm (round robin, least connections) based on request cost variance.
-- **Replication vs sharding**: replication copies the same data for read scaling and failover; sharding splits data across nodes for write scaling. Most apps need replication long before they need sharding.
-- **Asynchronous processing**: push slow or non-critical work (emails, image processing, notifications) onto a queue instead of blocking the request/response cycle.
+- Designing for imaginary hyperscale while ignoring current operability and delivery speed.
+- Treating horizontal scaling as automatic when the database, locks, or external APIs remain serial bottlenecks.
+- Adding a cache without an invalidation contract or using a queue without backpressure.
+- Assuming exactly-once business effects from an at-least-once transport.
+- Using active-active architecture without resolving conflicts and testing regional failure.
+- Omitting cost, data residency, deployment, migration, and rollback from the design.
 
 ## When To Use
 
-Revisit this file at the start of any new application, and again whenever a specific bottleneck (latency, throughput, cost) appears in production — don't pre-optimize for scale the product doesn't have yet.
+Use this skill before major application architecture decisions, capacity changes, reliability reviews, or decomposition into distributed services. For a small application, use it to document why a modular monolith and one primary database are sufficient. Escalate complexity only when measured load, organizational boundaries, availability needs, or isolation constraints require it.
 
-## External Sources
+## Further Reading
 
-All sources above are external, actively maintained GitHub repositories. Link to them rather than copying their content; they are updated more often than this file will be.
+See the curated [source register](sources.md).

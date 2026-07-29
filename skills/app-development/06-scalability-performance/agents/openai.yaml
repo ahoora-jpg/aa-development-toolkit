@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scalability and Performance"
+  short_description: "Improve application scalability and performance"
+  default_prompt: "Use $06-scalability-performance to guide this task with practical checks and recommendations."

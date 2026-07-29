@@ -1,0 +1,4 @@
+interface:
+  display_name: "Authentication and Security"
+  short_description: "Apply secure authentication and authorization"
+  default_prompt: "Use $05-authentication-security to guide this task with practical checks and recommendations."

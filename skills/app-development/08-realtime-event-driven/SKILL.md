@@ -1,43 +1,48 @@
-# Real-Time & Event-Driven Architecture
+---
+name: 08-realtime-event-driven
+description: Design real-time delivery and event-driven systems using WebSockets, server-sent events, polling, pub/sub, durable messaging, and broker tradeoffs. Use for live updates, background integration, event contracts, or asynchronous service communication.
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Real-time and Event-driven Systems
 
-## Purpose
+## Overview
 
-How to build features that need live updates (chat, notifications, dashboards) and how to structure services around events rather than direct calls, for looser coupling at scale.
+Separate the need for immediate client updates from the need for asynchronous service integration. Choose the least complex transport that meets direction, latency, delivery, ordering, retention, and scale requirements. Design business effects to tolerate duplicates and delayed or reordered messages.
 
-## Key Sources
+## Key Concepts
 
-### Awesome Software Architecture — Event-Driven Architecture
+- **Polling:** Ordinary HTTP requests are simple, cacheable, observable, and resilient through intermediaries. Use conditional or long polling when update frequency is modest.
+- **Server-sent events:** SSE provides a browser-friendly, one-way server-to-client stream over HTTP with reconnection semantics. Commands still use normal HTTP.
+- **WebSockets:** A persistent full-duplex channel suits chat, collaboration, games, and high-frequency bidirectional interaction. It requires connection lifecycle, authentication refresh, heartbeats, backpressure, fan-out, and reconnect state.
+- **Events and commands:** A command asks an owner to perform work; an event records a fact that occurred. Events should use durable identifiers, schema versions, occurrence time, producer, and correlation/causation data.
+- **Pub/sub and queues:** Pub/sub distributes messages to interested consumers; work queues distribute tasks among workers. Durability, replay, ordering, and acknowledgment vary by product.
+- **Delivery semantics:** At-most-once may lose; at-least-once may duplicate. "Exactly once" is scoped and rarely guarantees exactly one external business effect.
+- **Broker shape:** Kafka emphasizes durable partitioned logs and replay; RabbitMQ emphasizes flexible routed queues and acknowledgments; NATS emphasizes simple, low-latency messaging with JetStream adding persistence.
 
-Repository:
-https://github.com/mehdihadeli/awesome-software-architecture/blob/main/docs/event-driven-architecture.md
+## Best Practices
 
-Notes: Curated articles and talks specifically on event-driven design, including outbox pattern, event sourcing, and practical Kafka-based integration examples.
+- Choose protocol and broker from explicit requirements, not popularity.
+- Publish events only after authoritative state commits; use a transactional outbox or change-data mechanism when required.
+- Make consumers idempotent with stable message IDs and atomic deduplication/business updates.
+- Define schema ownership, compatibility rules, retention, partition key, ordering scope, and sensitive-data policy.
+- Bound retry count and age; use exponential backoff, poison-message quarantine, and replay tooling.
+- Monitor consumer lag, queue age, redelivery, dead letters, connection count, fan-out latency, and dropped messages.
+- Authenticate subscriptions and authorize every channel/topic; revalidate long-lived access when membership changes.
 
-### AsyncAPI Specification
+## Common Pitfalls
 
-Site:
-https://www.asyncapi.com
-
-Notes: Standard way to document event-driven/async APIs (topics, message schemas, protocols) — the event-driven equivalent of OpenAPI, referenced in 03-api-design.
-
-## Core Concepts To Apply
-
-- **Choosing a live-update mechanism**:
-  - *WebSockets*: full-duplex, best for chat, collaborative editing, anything needing low-latency two-way communication.
-  - *Server-Sent Events (SSE)*: simpler than WebSockets, one-way (server to client), good fit for live feeds/notifications/dashboards that don't need the client to push back.
-  - *Polling*: simplest to implement, acceptable when near-real-time (a few seconds of delay) is fine and traffic is low — don't reach for WebSockets by default if polling meets the actual requirement.
-- **Event-driven architecture basics**: services publish events ("OrderPlaced," "PaymentFailed") to a broker instead of calling each other directly; other services subscribe to the events they care about. This decouples services so one going down doesn't cascade-fail the others, at the cost of eventual (not immediate) consistency.
-- **Message brokers, conceptually**: Kafka (high-throughput event log, good for streaming/analytics and replay), RabbitMQ (traditional message queue, good for task distribution and simpler routing), NATS (lightweight, low-latency, good for simple pub/sub at smaller scale). Pick based on required throughput and whether you need message replay, not by default habit.
-- **Outbox pattern**: when a service needs to update its database and publish an event atomically, write the event to an "outbox" table in the same transaction as the data change, then a separate process publishes from the outbox — avoids the classic bug where the DB write succeeds but the event publish fails (or vice versa).
-- **Idempotent consumers**: any service consuming events must handle receiving the same event twice (brokers generally guarantee at-least-once delivery, not exactly-once) — design event handlers to be safe to run twice.
+- Using WebSockets for infrequent notifications that polling or SSE handles more reliably.
+- Assuming global ordering from a partitioned broker.
+- Publishing database-derived events before the transaction commits.
+- Retrying permanent failures forever or treating a dead-letter queue as resolution.
+- Sharing internal event schemas as public contracts without lifecycle control.
+- Including large mutable payloads or sensitive data in widely replicated events.
+- Building request/response RPC over a broker without timeouts, ownership, and failure semantics.
 
 ## When To Use
 
-Reach for real-time transport only for features that genuinely need it (chat, live collaboration, live dashboards); reach for event-driven service communication when multiple services need to react to the same business event without tight coupling — not as a default for every internal call.
+Use polling for low-frequency or cache-friendly updates, SSE for predominantly server-to-browser streams, and WebSockets for genuine bidirectional low-latency sessions. Use durable events when producers and consumers need temporal decoupling, replay, or independent scaling; retain synchronous calls where an immediate authoritative answer is required.
 
-## External Sources
+## Further Reading
 
-Both sources above are external, actively maintained — link to them rather than duplicating their content here.
+See the curated [source register](sources.md).

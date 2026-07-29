@@ -1,7 +1,9 @@
-# Conversion Rate Optimization (CRO)
+---
+name: conversion-rate-optimization
+description: "Improve website and ecommerce conversion through evidence-based UX, funnel analysis, experimentation, and friction reduction. Use when auditing product pages, checkout flows, forms, calls to action, or conversion metrics."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Conversion Rate Optimization (CRO)
 
 ## Purpose
 

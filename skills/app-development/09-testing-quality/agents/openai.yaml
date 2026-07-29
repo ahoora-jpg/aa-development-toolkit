@@ -1,0 +1,4 @@
+interface:
+  display_name: "Testing and Quality"
+  short_description: "Plan effective application testing and quality"
+  default_prompt: "Use $09-testing-quality to guide this task with practical checks and recommendations."

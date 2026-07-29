@@ -1,0 +1,4 @@
+interface:
+  display_name: "DevOps and Deployment"
+  short_description: "Build reliable delivery and operations workflows"
+  default_prompt: "Use $10-devops-deployment to guide this task with practical checks and recommendations."

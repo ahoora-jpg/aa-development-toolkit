@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Photography"
+  short_description: "Plan effective ecommerce product photography"
+  default_prompt: "Use $product-photography to guide this task with practical checks and recommendations."

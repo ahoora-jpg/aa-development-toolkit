@@ -1,0 +1,4 @@
+interface:
+  display_name: "Content Strategy & Copywriting"
+  short_description: "Write strategic conversion-focused web content"
+  default_prompt: "Use $content-copywriting to guide this task with practical checks and recommendations."

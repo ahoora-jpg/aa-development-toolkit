@@ -1,0 +1,4 @@
+interface:
+  display_name: "Persian Typography"
+  short_description: "Implement readable Persian and RTL typography"
+  default_prompt: "Use $persian-typography to guide this task with practical checks and recommendations."

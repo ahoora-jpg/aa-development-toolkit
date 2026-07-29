@@ -1,7 +1,9 @@
-# Persian Typography
+---
+name: persian-typography
+description: "Choose and implement Persian and Farsi typography for readable RTL web and app interfaces. Use when selecting licensed Persian fonts, defining type scales, loading webfonts, or reviewing Persian text rendering."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Persian Typography
 
 ## Purpose
 
