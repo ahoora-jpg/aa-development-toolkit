@@ -1,7 +1,9 @@
-# Performance & Core Web Vitals
+---
+name: performance
+description: "Improve real-user web performance and Core Web Vitals through measurement, loading strategy, rendering control, and asset optimization. Use when diagnosing or preventing LCP, INP, CLS, JavaScript, image, or font issues."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Performance & Core Web Vitals
 
 ## Purpose
 

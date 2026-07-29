@@ -1,0 +1,4 @@
+interface:
+  display_name: "Typography & Color Trends (2026)"
+  short_description: "Apply current typography and color direction"
+  default_prompt: "Use $typography-color-2026 to guide this task with practical checks and recommendations."

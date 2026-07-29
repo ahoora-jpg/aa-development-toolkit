@@ -28,6 +28,11 @@ Every reusable asset should have one of these statuses:
 
 Only Approved assets are considered default choices for production projects.
 
+Installable packages under `skills/` use successful repository validation as
+their readiness gate rather than a `Status:` line inside `SKILL.md`. Planned
+top-level libraries may continue to state Draft, Review, Approved, or
+Deprecated in their local documentation.
+
 ## Scope
 
 This repository may contain:

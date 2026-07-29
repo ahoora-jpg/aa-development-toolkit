@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conversion Rate Optimization (CRO)"
+  short_description: "Improve website and ecommerce conversion"
+  default_prompt: "Use $conversion-rate-optimization to guide this task with practical checks and recommendations."

@@ -1,41 +1,46 @@
-# Scalability & Performance
+---
+name: 06-scalability-performance
+description: Scale application workloads with measurement-led capacity planning, caching, rate limiting, queues, concurrency control, and load testing. Use when latency, throughput, traffic growth, or resource saturation needs deliberate engineering.
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Scalability and Performance
 
-## Purpose
+## Overview
 
-Practical techniques for keeping an application fast and stable as user count and data volume grow, plus how to measure whether it's actually working.
+Performance work begins with a user-visible objective and measured bottleneck. Establish a baseline, load shape, latency percentiles, error rate, and saturation point before changing architecture. Optimize the constrained resource and preserve correctness under overload.
 
-## Key Sources
+## Key Concepts
 
-### Awesome Scalability
+- **Vertical and horizontal scaling:** Larger machines are simple but bounded; more instances improve elasticity and resilience when state and coordination permit. Most systems use both.
+- **Caching layers:** Browser/client, CDN, reverse proxy, application, and datastore caches solve different problems. Track hit rate, origin load, object size, eviction, freshness, and invalidation.
+- **Rate limiting:** Token bucket supports bursts; leaky bucket smooths work; fixed or sliding windows enforce quotas. Scope limits by authenticated identity, tenant, operation, and resource cost—not IP alone.
+- **Asynchronous work:** Queues absorb bursts and move non-interactive work off the request path. Throughput still requires bounded consumers, backpressure, idempotency, retry policy, and backlog objectives.
+- **Concurrency and contention:** Locks, connection pools, hot keys, serialized workflows, and downstream quotas often cap scale before CPU does.
+- **Load testing:** Model realistic arrival rates, datasets, cache state, payloads, and dependencies. Distinguish smoke, average-load, stress, spike, and soak tests.
 
-Repository:
-https://github.com/ci-ai/scalability
+## Best Practices
 
-Notes: Same source as in 01-system-design — organized by concrete problem/pattern (caching, load balancing, message queues, database scaling), useful as a lookup table once a specific bottleneck is identified.
+- Define latency and availability SLOs per critical journey; correlate them with resource and dependency metrics.
+- Profile before optimizing and repeat the same test after each change.
+- Cache only data with an explicit freshness contract; use request coalescing, jittered TTLs, and stale-while-revalidate where suitable.
+- Apply admission control early, return clear retry guidance, and reserve capacity for health and recovery traffic.
+- Autoscale on a signal linked to bottleneck—queue age, concurrency, or saturation—not CPU by habit.
+- Test beyond expected peak until the system fails; verify graceful degradation and recovery after load stops.
+- Include database connections, third-party quotas, cost, and regional capacity in the model.
 
-### k6 (load testing)
+## Common Pitfalls
 
-Repository:
-https://github.com/grafana/k6
-
-Notes: Open-source, developer-friendly load testing tool (scripts in JavaScript) for simulating real user traffic against an API before it hits production load — the standard way to verify a scalability change actually helped.
-
-## Core Concepts To Apply
-
-- **Measure before optimizing**: use load testing (k6, or similar) and real production metrics to find the actual bottleneck before making architectural changes — most performance problems are in one specific slow query or endpoint, not "the whole system."
-- **Horizontal over vertical scaling**: design the app to run multiple stateless instances behind a load balancer rather than relying on one bigger server — this is what makes scaling (and failover) possible.
-- **Caching layers**: application-level cache (Redis) for expensive computed/queried data; CDN for static assets and cacheable API responses; set explicit TTLs and an invalidation strategy, not just "cache everything forever."
-- **Asynchronous/queue-based processing**: move slow or bursty work (emails, notifications, image/video processing, report generation) off the request path onto a background queue (e.g. Redis-backed job queue, RabbitMQ, SQS) so user-facing requests stay fast under load.
-- **Rate limiting & backpressure**: protect the system from being overwhelmed by a traffic spike or abusive client by capping request rates and failing gracefully (clear error, retry-after header) rather than falling over.
-- **Database connection pooling**: reuse database connections instead of opening a new one per request — a frequent, easy-to-miss scaling bottleneck.
+- Reporting average latency while tail latency and errors are unacceptable.
+- Running load generators on the system under test or with insufficient generator capacity.
+- Warming all caches unrealistically or testing only a tiny, nonrepresentative dataset.
+- Adding replicas when writes, locks, or an external dependency are the bottleneck.
+- Retrying throttled work without jitter or budget, creating a self-sustaining overload loop.
+- Scaling consumers without protecting the database or downstream service they feed.
 
 ## When To Use
 
-Apply once real usage data exists — don't build for a scale the product doesn't have yet, but do build the app so scaling later (adding instances, adding a cache, adding a queue) doesn't require a rewrite.
+Use this skill when setting launch capacity, diagnosing slow requests, preparing for traffic events, or establishing scaling policy. Do not wait for production pain: run representative tests before release. Keep a simple architecture when it meets objectives with safe headroom.
 
-## External Sources
+## Further Reading
 
-Both sources above are external, actively maintained projects — link to them rather than duplicating their content here.
+See the curated [source register](sources.md).

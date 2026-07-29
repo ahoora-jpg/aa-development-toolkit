@@ -1,0 +1,4 @@
+interface:
+  display_name: "Iconography"
+  short_description: "Build consistent and accessible icon systems"
+  default_prompt: "Use $iconography to guide this task with practical checks and recommendations."

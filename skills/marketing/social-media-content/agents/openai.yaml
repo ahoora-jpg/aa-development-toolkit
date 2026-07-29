@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Media Content Design"
+  short_description: "Design consistent platform-aware social content"
+  default_prompt: "Use $social-media-content to guide this task with practical checks and recommendations."

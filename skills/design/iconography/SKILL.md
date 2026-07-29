@@ -1,7 +1,9 @@
-# Iconography
+---
+name: iconography
+description: "Choose, design, and implement consistent accessible icon systems with controlled sizing, stroke, semantics, and delivery. Use when selecting an icon library, creating custom icons, or auditing icon usability and performance."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Iconography
 
 ## Purpose
 

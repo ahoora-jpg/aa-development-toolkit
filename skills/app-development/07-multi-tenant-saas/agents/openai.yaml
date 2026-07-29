@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multi-tenant SaaS"
+  short_description: "Design isolated multi-tenant SaaS systems"
+  default_prompt: "Use $07-multi-tenant-saas to guide this task with practical checks and recommendations."

@@ -1,7 +1,9 @@
-# SEO (Search Engine & AI-Answer Optimization)
+---
+name: seo
+description: "Improve technical SEO, content discoverability, structured data, and visibility in search and AI answers. Use when planning or auditing crawlability, indexing, metadata, information architecture, content, or search performance."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# SEO (Search Engine & AI-Answer Optimization)
 
 ## Purpose
 

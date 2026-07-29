@@ -1,0 +1,4 @@
+interface:
+  display_name: "Real-time and Event-driven Systems"
+  short_description: "Design real-time and event-driven systems"
+  default_prompt: "Use $08-realtime-event-driven to guide this task with practical checks and recommendations."

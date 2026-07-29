@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile-First & Responsive Design"
+  short_description: "Design responsive mobile-first interfaces"
+  default_prompt: "Use $mobile-first-responsive to guide this task with practical checks and recommendations."

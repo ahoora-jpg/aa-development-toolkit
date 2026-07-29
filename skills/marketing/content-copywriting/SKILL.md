@@ -1,7 +1,9 @@
-# Content Strategy & Copywriting
+---
+name: content-copywriting
+description: "Plan and write clear conversion-oriented website content aligned with audience needs, brand voice, and search intent. Use when creating page messaging, calls to action, information hierarchy, or content briefs."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Content Strategy & Copywriting
 
 ## Purpose
 

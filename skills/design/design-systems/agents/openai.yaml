@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Systems"
+  short_description: "Build and govern reusable design systems"
+  default_prompt: "Use $design-systems to guide this task with practical checks and recommendations."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Performance & Core Web Vitals"
+  short_description: "Improve web performance and Core Web Vitals"
+  default_prompt: "Use $performance to guide this task with practical checks and recommendations."

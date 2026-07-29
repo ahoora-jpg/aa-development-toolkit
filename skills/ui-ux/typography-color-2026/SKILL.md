@@ -1,7 +1,9 @@
-# Typography & Color Trends (2026)
+---
+name: typography-color-2026
+description: "Evaluate and apply current 2026 web typography and color directions while separating durable system choices from short-lived trends. Use when defining contemporary type, palette, contrast, and design-token direction."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Typography & Color Trends (2026)
 
 ## Purpose
 

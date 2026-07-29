@@ -1,7 +1,9 @@
-# Tactile Brutalism
+---
+name: tactile-brutalism
+description: "Apply tactile brutalist visual direction with sharp geometry, strong contrast, texture, and deliberate interaction while preserving usability. Use when evaluating or designing this aesthetic for a suitable brand."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Tactile Brutalism
 
 ## Purpose
 

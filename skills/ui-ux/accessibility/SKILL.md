@@ -1,7 +1,9 @@
-# Accessibility
+---
+name: accessibility
+description: "Design, implement, and audit accessible web interfaces against WCAG 2.2 AA practices. Use when reviewing semantics, keyboard access, focus, contrast, forms, motion, touch targets, or assistive-technology support."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Accessibility
 
 ## Purpose
 

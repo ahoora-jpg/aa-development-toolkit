@@ -1,7 +1,9 @@
-# Mobile-First & Responsive Design
+---
+name: mobile-first-responsive
+description: "Design and implement mobile-first responsive interfaces that adapt across content, viewport, input, and device constraints. Use when planning breakpoints, fluid layouts, touch interaction, responsive media, or mobile QA."
+---
 
-Status: Draft
-Last reviewed: 2026-07-26
+# Mobile-First & Responsive Design
 
 ## Purpose
 
