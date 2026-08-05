@@ -74,6 +74,8 @@ status model (Draft / Review / Approved / Deprecated).
 | Grid & Layout Systems | `skills/design/grid-layout-systems/SKILL.md` |
 | Iconography | `skills/design/iconography/SKILL.md` |
 | Logo Design | `skills/design/logo-design/SKILL.md` |
+| Brand Guidelines Enforcement | `skills/design/brand-guidelines/SKILL.md` |
+| Standalone Visuals (Covers/Posters/Social) | `skills/design/standalone-visuals/SKILL.md` |
 
 ### UI/UX (`skills/ui-ux/`)
 | Skill | Path |
@@ -84,6 +86,11 @@ status model (Draft / Review / Approved / Deprecated).
 | Persian Typography | `skills/ui-ux/persian-typography/SKILL.md` |
 | Tactile Brutalism | `skills/ui-ux/tactile-brutalism/SKILL.md` |
 | Typography & Color Trends (2026) | `skills/ui-ux/typography-color-2026/SKILL.md` |
+| Design Tokens & Design-to-Code Handoff | `skills/ui-ux/design-tokens-handoff/SKILL.md` |
+| Dark Mode 3.0 (2026) | `skills/ui-ux/dark-mode-2026/SKILL.md` |
+| Motion & Scroll-Driven Animation | `skills/ui-ux/motion-scroll-driven/SKILL.md` |
+| Agent-Ready Sites (WebMCP) | `skills/ui-ux/agent-ready-sites-webmcp/SKILL.md` |
+| Voice UI (VUI) Navigation | `skills/ui-ux/voice-ui-navigation/SKILL.md` |
 
 ### Marketing (`skills/marketing/`)
 | Skill | Path |
@@ -121,19 +128,20 @@ status model (Draft / Review / Approved / Deprecated).
 | Directory | Status | Purpose |
 |---|---|---|
 | `references/` | Partial content | Curated external sources (web-design: 3D, motion, glass, etc.) |
-| `animations/` | Empty — pending | Approved motion patterns, GSAP utilities, scroll effects |
+| `animations/` | Has content | `animations/micro-interactions.md` — generic timing/easing patterns |
 | `assets/` | Empty — pending | Reusable media assets |
-| `components/` | Empty — pending | Reusable, approved UI components |
+| `components/` | Has content | `button/`, `card/`, `navbar/` — generic, framework-agnostic components |
 | `frontend/` | Empty — pending | Frontend architecture patterns |
-| `prompts/` | Empty — pending | Reusable AI prompts |
-| `snippets/` | Empty — pending | Reusable code snippets |
-| `templates/` | Empty — pending | Project starter templates |
-| `tools/` | Empty — pending | Reusable dev tools/scripts |
+| `prompts/` | Has content | Reusable, category-agnostic prompt templates for common site-building tasks |
+| `snippets/` | Has content | Scroll-reveal, dark-mode toggle, accessible form validation |
+| `templates/` | Has content | Generic site archetypes: landing page, catalog/listing, SaaS dashboard |
+| `tools/` | Has content | Contrast checker snippet, pre-launch quality checklist |
 | `wordpress/` | Empty — pending | WordPress/WooCommerce standards |
 
-Directories marked "Empty — pending" contain only a placeholder `README.md`
-describing intended content requirements. Do not assume they contain
-usable material until their status changes.
+All content added above is intentionally **category-agnostic** — generic
+enough to reuse across any project (retail, services, SaaS, portfolio,
+etc.), not tied to a specific product or industry. `assets/`, `frontend/`,
+and `wordpress/` remain placeholder-only pending real content.
 
 ## License
 

@@ -7,6 +7,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- 6 new `SKILL.md` files reflecting 2026 web design direction, all
+  category-agnostic (reusable for any project, any industry):
+  - `skills/ui-ux/design-tokens-handoff/`
+  - `skills/ui-ux/dark-mode-2026/`
+  - `skills/ui-ux/motion-scroll-driven/`
+  - `skills/ui-ux/agent-ready-sites-webmcp/`
+  - `skills/ui-ux/voice-ui-navigation/`
+  - `skills/design/brand-guidelines/`
+  - `skills/design/standalone-visuals/`
+- Real, category-agnostic content in previously empty directories:
+  - `components/` — button, card, navbar (framework-agnostic, token-based)
+  - `snippets/` — scroll-reveal, dark mode toggle, accessible form validation
+  - `prompts/` — reusable prompt templates for landing pages, catalog
+    pages, and accessibility audits
+  - `templates/` — generic site archetypes (landing page, catalog/
+    listing, SaaS dashboard)
+  - `tools/` — contrast-ratio checker snippet, pre-launch quality checklist
+  - `animations/` — standard micro-interaction timing patterns
 - `AGENTS.md` — universal, tool-agnostic entry point so any AI assistant
   (not only Claude Code) can discover and use the skills and standards in
   this repository.
