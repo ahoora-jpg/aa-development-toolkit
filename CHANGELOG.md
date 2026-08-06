@@ -7,6 +7,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- `docs/quality-gate.md` — **mandatory** design quality checklist (5
+  gates: accessibility, design-system consistency, responsive/performance,
+  content & agent legibility, source/licensing). Any AI assistant must
+  pass this in full before presenting a design/site deliverable as
+  finished. Referenced as a required step in `AGENTS.md`.
 - 6 new `SKILL.md` files reflecting 2026 web design direction, all
   category-agnostic (reusable for any project, any industry):
   - `skills/ui-ux/design-tokens-handoff/`

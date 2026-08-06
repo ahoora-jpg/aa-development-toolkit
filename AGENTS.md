@@ -49,6 +49,11 @@ status model (Draft / Review / Approved / Deprecated).
 6. Never copy external code into production without checking license,
    compatibility, accessibility, performance, and security, per the
    Source Policy in the manifest.
+7. **Before presenting any design or site deliverable as finished, run
+   [`docs/quality-gate.md`](docs/quality-gate.md) in full.** This is
+   mandatory, not optional — a deliverable that hasn't passed every item
+   in that gate is not done. State explicitly in the response which gate
+   items were checked and their pass/fail result.
 
 ## Skills index
 
@@ -111,6 +116,7 @@ status model (Draft / Review / Approved / Deprecated).
 | Doc | Path |
 |---|---|
 | Manifest (read first) | `docs/manifest.md` |
+| **Design Quality Gate (mandatory before delivery)** | `docs/quality-gate.md` |
 | Development Rules | `docs/development-rules.md` |
 | Coding Standards | `docs/coding-standards.md` |
 | Naming Conventions | `docs/naming-conventions.md` |

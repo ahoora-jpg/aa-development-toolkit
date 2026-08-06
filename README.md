@@ -13,6 +13,9 @@ across current and future projects.
   this repository. Read this first.
 - **[`docs/manifest.md`](docs/manifest.md)** — the full governing manifest:
   core principles, asset status model, decision priority, source policy.
+- **[`docs/quality-gate.md`](docs/quality-gate.md)** — mandatory design
+  quality checklist. Any AI assistant must pass this in full before
+  presenting a design/site deliverable as finished.
 
 ## Repository structure
 
@@ -92,6 +95,7 @@ not tied to a specific product or industry. `assets/`, `frontend/`, and
 ## Docs index
 
 - [Manifest](docs/manifest.md)
+- [**Design Quality Gate (mandatory)**](docs/quality-gate.md)
 - [Development Rules](docs/development-rules.md)
 - [Coding Standards](docs/coding-standards.md)
 - [Naming Conventions](docs/naming-conventions.md)
