@@ -59,6 +59,10 @@ not tied to a specific product or industry. `assets/`, `frontend/`, and
 - [Real-Time & Event-Driven Architecture](skills/app-development/08-realtime-event-driven/SKILL.md)
 - [Testing & Quality](skills/app-development/09-testing-quality/SKILL.md)
 - [DevOps & Deployment](skills/app-development/10-devops-deployment/SKILL.md)
+- [Next.js App Router](skills/app-development/11-nextjs-app-router/SKILL.md)
+- [Headless CMS Integration (Sanity pattern)](skills/app-development/12-headless-cms-sanity/SKILL.md)
+- [Multi-Language Routing & SEO (i18n)](skills/app-development/13-i18n-multilingual/SKILL.md)
+- [Cloudflare Deployment (DNS/CDN/WAF)](skills/app-development/14-cloudflare-deployment/SKILL.md)
 
 ### Design
 - [Branding & Brand Identity](skills/design/branding/SKILL.md)

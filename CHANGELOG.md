@@ -7,6 +7,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- 4 new `SKILL.md` files under `skills/app-development/` for content-
+  driven, multi-language corporate sites: `11-nextjs-app-router`,
+  `12-headless-cms-sanity`, `13-i18n-multilingual`,
+  `14-cloudflare-deployment`.
 - `tools/bootstrap-project.js` — dependency-free Node.js script that
   scaffolds a new project (tokens, base components, structure template,
   quality gate) from this toolkit in one command.
