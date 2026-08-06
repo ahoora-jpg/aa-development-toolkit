@@ -96,11 +96,13 @@ status model (Draft / Review / Approved / Deprecated).
 | Motion & Scroll-Driven Animation | `skills/ui-ux/motion-scroll-driven/SKILL.md` |
 | Agent-Ready Sites (WebMCP) | `skills/ui-ux/agent-ready-sites-webmcp/SKILL.md` |
 | Voice UI (VUI) Navigation | `skills/ui-ux/voice-ui-navigation/SKILL.md` |
+| RTL & Farsi Layout | `skills/ui-ux/rtl-farsi/SKILL.md` |
 
 ### Marketing (`skills/marketing/`)
 | Skill | Path |
 |---|---|
 | Content Strategy & Copywriting | `skills/marketing/content-copywriting/SKILL.md` |
+| AI-Generated Content Guardrails | `skills/marketing/ai-content-guardrails/SKILL.md` |
 | Conversion Rate Optimization (CRO) | `skills/marketing/conversion-rate-optimization/SKILL.md` |
 | Product Photography | `skills/marketing/product-photography/SKILL.md` |
 | Social Media Content Design | `skills/marketing/social-media-content/SKILL.md` |
@@ -117,6 +119,8 @@ status model (Draft / Review / Approved / Deprecated).
 |---|---|
 | Manifest (read first) | `docs/manifest.md` |
 | **Design Quality Gate (mandatory before delivery)** | `docs/quality-gate.md` |
+| Skill Maturity & Promotion Process | `docs/skill-maturity-process.md` |
+| Skill Usage Log | `docs/skill-usage-log.md` |
 | Development Rules | `docs/development-rules.md` |
 | Coding Standards | `docs/coding-standards.md` |
 | Naming Conventions | `docs/naming-conventions.md` |
@@ -141,8 +145,22 @@ status model (Draft / Review / Approved / Deprecated).
 | `prompts/` | Has content | Reusable, category-agnostic prompt templates for common site-building tasks |
 | `snippets/` | Has content | Scroll-reveal, dark-mode toggle, accessible form validation |
 | `templates/` | Has content | Generic site archetypes: landing page, catalog/listing, SaaS dashboard |
-| `tools/` | Has content | Contrast checker snippet, pre-launch quality checklist |
+| `tools/` | Has content | Contrast checker snippet, pre-launch quality checklist, `bootstrap-project.js` scaffolding script |
 | `wordpress/` | Empty — pending | WordPress/WooCommerce standards |
+
+## Examples
+
+`examples/` contains full, self-contained reference pages showing
+multiple skills combined: `landing-page.html` (tokens, dark mode,
+accessible navbar, scroll motion) and `catalog-page-rtl.html` (RTL/Farsi
+layout, filter+grid pattern). See `examples/README.md`.
+
+## Bootstrapping a new project
+
+Run `node tools/bootstrap-project.js <project-name> --archetype=landing|catalog|dashboard`
+from inside this toolkit to scaffold a new project folder with tokens,
+base components, the matching structure template, and the mandatory
+quality gate copied in. No dependencies required — plain Node.js.
 
 All content added above is intentionally **category-agnostic** — generic
 enough to reuse across any project (retail, services, SaaS, portfolio,

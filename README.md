@@ -81,9 +81,11 @@ not tied to a specific product or industry. `assets/`, `frontend/`, and
 - [Motion & Scroll-Driven Animation](skills/ui-ux/motion-scroll-driven/SKILL.md)
 - [Agent-Ready Sites (WebMCP)](skills/ui-ux/agent-ready-sites-webmcp/SKILL.md)
 - [Voice UI (VUI) Navigation](skills/ui-ux/voice-ui-navigation/SKILL.md)
+- [RTL & Farsi Layout](skills/ui-ux/rtl-farsi/SKILL.md)
 
 ### Marketing
 - [Content Strategy & Copywriting](skills/marketing/content-copywriting/SKILL.md)
+- [AI-Generated Content Guardrails](skills/marketing/ai-content-guardrails/SKILL.md)
 - [Conversion Rate Optimization (CRO)](skills/marketing/conversion-rate-optimization/SKILL.md)
 - [Product Photography](skills/marketing/product-photography/SKILL.md)
 - [Social Media Content Design](skills/marketing/social-media-content/SKILL.md)
@@ -96,6 +98,8 @@ not tied to a specific product or industry. `assets/`, `frontend/`, and
 
 - [Manifest](docs/manifest.md)
 - [**Design Quality Gate (mandatory)**](docs/quality-gate.md)
+- [Skill Maturity & Promotion Process](docs/skill-maturity-process.md)
+- [Skill Usage Log](docs/skill-usage-log.md)
 - [Development Rules](docs/development-rules.md)
 - [Coding Standards](docs/coding-standards.md)
 - [Naming Conventions](docs/naming-conventions.md)
@@ -107,6 +111,20 @@ not tied to a specific product or industry. `assets/`, `frontend/`, and
 - [Performance Standards](docs/performance.md)
 - [SEO Standards](docs/seo.md)
 - [Review Checklist](docs/review-checklist.md)
+
+## Examples
+
+`examples/` contains full, self-contained reference pages combining
+multiple skills at once — see `examples/README.md`.
+
+## Bootstrapping a new project
+
+```
+node tools/bootstrap-project.js my-new-project --archetype=landing
+```
+Archetypes: `landing`, `catalog`, `dashboard`. Scaffolds tokens, base
+components, the matching structure template, and the mandatory quality
+gate into a new project folder. No dependencies required.
 
 ## Using this toolkit with an AI assistant
 

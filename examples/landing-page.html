@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Example Landing Page — aa-development-toolkit</title>
+<meta name="description" content="Reference example combining design tokens, dark mode, accessible navbar, scroll-reveal motion, and semantic structure from aa-development-toolkit." />
+<style>
+  :root {
+    --color-background: #ffffff;
+    --color-foreground: #0a0a0a;
+    --color-primary: #171717;
+    --color-primary-foreground: #fafafa;
+    --color-border: #e5e5e5;
+    --color-muted: #f5f5f5;
+    --space-2: 8px; --space-4: 16px; --space-6: 24px; --space-8: 32px;
+    --radius-md: 10px; --radius-lg: 16px;
+    --shadow-1: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-2: 0 4px 12px rgba(0,0,0,0.08);
+    --motion-fast: 120ms;
+    --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  }
+  [data-theme="dark"] {
+    --color-background: #0a0a0a;
+    --color-foreground: #fafafa;
+    --color-primary: #fafafa;
+    --color-primary-foreground: #171717;
+    --color-border: #262626;
+    --color-muted: #171717;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    transition: background var(--motion-fast) var(--easing-standard);
+  }
+  header {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-4) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+  header .logo { font-weight: 700; font-size: 1.1rem; }
+  header button {
+    background: none; border: 1px solid var(--color-border);
+    color: var(--color-foreground); border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-4); cursor: pointer;
+  }
+  .hero {
+    max-width: 720px; margin: 0 auto; padding: 96px var(--space-6) 64px;
+    text-align: center;
+  }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0 0 var(--space-4); }
+  .hero p { font-size: 1.1rem; opacity: 0.75; margin: 0 0 var(--space-8); }
+  .btn-primary {
+    background: var(--color-primary); color: var(--color-primary-foreground);
+    border: none; border-radius: var(--radius-md); padding: 12px 28px;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: opacity var(--motion-fast) var(--easing-standard);
+  }
+  .btn-primary:hover { opacity: 0.9; }
+
+  .features {
+    max-width: 960px; margin: 0 auto; padding: 0 var(--space-6) 96px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-6);
+  }
+  .feature-card {
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    padding: var(--space-6); background: var(--color-background);
+    box-shadow: var(--shadow-1);
+  }
+  .feature-card h3 { margin: 0 0 var(--space-2); font-size: 1.05rem; }
+  .feature-card p { margin: 0; opacity: 0.7; font-size: 0.95rem; }
+
+  /* Scroll-reveal (skills/ui-ux/motion-scroll-driven) */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none; opacity: 1; transform: none; }
+  }
+
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) var(--space-6); text-align: center;
+    opacity: 0.6; font-size: 0.9rem;
+  }
+  :focus-visible { outline: 2px solid #4f83ff; outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Brand</span>
+  <button id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark mode</button>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>A landing page built from reusable tokens and components</h1>
+    <p>This example combines design tokens, dark mode, accessible navigation, and scroll-driven motion — all from aa-development-toolkit, none of it project-specific.</p>
+    <button class="btn-primary">Get started</button>
+  </section>
+
+  <section class="features" aria-label="Key features">
+    <article class="feature-card reveal">
+      <h3>Design tokens</h3>
+      <p>Every color, spacing, and radius value here comes from CSS variables, not hard-coded numbers.</p>
+    </article>
+    <article class="feature-card reveal">
+      <h3>Dark mode 3.0</h3>
+      <p>True black background, not washed-out gray — toggle it with the button above.</p>
+    </article>
+    <article class="feature-card reveal">
+      <h3>Accessible by default</h3>
+      <p>Real semantic HTML, visible focus states, and reduced-motion support built in.</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  Reference example — aa-development-toolkit
+</footer>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    btn.textContent = isDark ? '🌙 Dark mode' : '☀️ Light mode';
+  });
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (systemDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️ Light mode';
+  }
+</script>
+
+</body>
+</html>

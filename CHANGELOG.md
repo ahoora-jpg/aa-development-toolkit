@@ -7,6 +7,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- `tools/bootstrap-project.js` — dependency-free Node.js script that
+  scaffolds a new project (tokens, base components, structure template,
+  quality gate) from this toolkit in one command.
+- `skills/ui-ux/rtl-farsi/SKILL.md` — RTL/Farsi layout correctness beyond
+  typography: logical CSS properties, icon mirroring, motion direction,
+  forms, charts.
+- `skills/marketing/ai-content-guardrails/SKILL.md` — rules to keep
+  AI-written copy from reading as generic/templated AI content.
+- `docs/skill-maturity-process.md` + `docs/skill-usage-log.md` — a
+  lightweight Draft → Review → Approved promotion process based on
+  logged real usage, extending the asset status model in
+  `docs/manifest.md`.
+- `examples/` — two full, self-contained reference pages
+  (`landing-page.html`, `catalog-page-rtl.html`) showing multiple skills
+  combined in one working page.
 - `docs/quality-gate.md` — **mandatory** design quality checklist (5
   gates: accessibility, design-system consistency, responsive/performance,
   content & agent legibility, source/licensing). Any AI assistant must
